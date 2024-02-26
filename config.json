@@ -1,0 +1,85 @@
+{
+  "tokenStandard": "pnft",
+  "number": 10,
+  "symbol": "NB",
+  "sellerFeeBasisPoints": 500,
+  "isMutable": true,
+  "isSequential": false,
+  "creators": [
+    {
+      "address": "2dyzegZcgquFdJuJhcmQ5QMoVCznQ9s2nG14EqU1MSmv",
+      "share": 100
+    }
+  ],
+  "uploadMethod": "bundlr",
+  "ruleSet": "eBJLFYPxJmMGKuFwpDWkzxZeUrad92kZRC5BJLpzyT9",
+  "awsConfig": null,
+  "sdriveApiKey": null,
+  "nftStorageAuthToken": null,
+  "shdwStorageAccount": null,
+  "pinataConfig": null,
+  "hiddenSettings": {
+    "name": "Hidden Janani #$ID+1$",
+    "uri": "https://ipfs.filebase.io/ipfs/QmVnWkbKTX3pjiE9rWT11HyAHndHK2XoutbD5opecGGqRp",
+    "hash": "9HGun2sQrnnZXs1c3AUyzaX9Vq7B2oBg"
+  },
+  "guards": {
+    "default": {
+      "botTax": {
+        "value": 0.1,
+        "lastInstruction": true
+      }
+    },
+    "groups": [
+      {
+        "label": "Pre",
+        "guards": {
+          "startDate": {
+            "date": "2024-02-26 12:00:00 +0000"
+          },
+          "endDate": {
+            "date": "2024-02-26 15:00:00 +0000"
+          },
+          "addressGate": {
+            "address": "2dyzegZcgquFdJuJhcmQ5QMoVCznQ9s2nG14EqU1MSmv"
+          },
+          "mintLimit": {
+            "id": 1,
+            "limit": 3
+          }
+        }
+      },
+      {
+        "label": "White",
+        "guards": {
+          "startDate": {
+            "date": "2024-02-27 12:00:00 +0000"
+          },
+          "endDate": {
+            "date": "2024-02-28 15:00:00 +0000"
+          },
+          "mintLimit": {
+            "id": 2,
+            "limit": 2
+          },
+          "allowList": {
+            "merkleRoot": "2ea8352a434e4ad384312b1b89b70a838b759363b472204aa1e4691257f05ae2"
+          }
+        }
+      },
+      {
+        "label": "Public",
+        "guards": {
+          "startDate": {
+            "date": "2024-03-01 12:00:00 +0000"
+          },
+          "mintLimit": {
+            "id": 3,
+            "limit": 1
+          }
+        }
+      }
+    ]
+  },
+  "maxEditionSupply": null
+}

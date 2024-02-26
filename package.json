@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "merklehash": "node addresses/generateMerkleRoot.js"
+  },
+  "dependencies": {
+    "@metaplex-foundation/mpl-candy-machine": "^6.0.1",
+    "merkletreejs": "^0.3.11"
+  }
+}
