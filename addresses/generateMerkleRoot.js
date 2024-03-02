@@ -1,9 +1,18 @@
 const { MerkleTree } = require('merkletreejs')
+const SHA256 = require('crypto-js/sha256')
+const {
+    getMerkleProof,
+    getMerkleRoot,
+    getMerkleTree,
+    
+
+  } = require( "@metaplex-foundation/mpl-candy-machine");
 const fs = require("fs");
 
 const whitelistPath = __dirname + "/whitelist.csv";
 const premintPath = __dirname + "/premint.csv";
 const addressHashPath = __dirname + "/addresshash.json";
+const addressesPath = __dirname + "/addresses.json";
 
 let whitelistMerkleRoot = '';
 let premintMerkleRoot = '';
@@ -22,21 +31,19 @@ const getListOfAddresses = async (path) => {
 const main = async () => {
     // Read and process whitelist.csv
     const whitelistedAddresses = await getListOfAddresses(whitelistPath);
-    console.log("Whitelisted Addresses:", whitelistedAddresses);
+   
     if (whitelistedAddresses.length > 0) {
-        let tree = new MerkleTree(whitelistedAddresses);
-        whitelistMerkleRoot = tree.getHexRoot();
-        console.log("Whitelist Merkle Root:", whitelistMerkleRoot);
+        whitelistMerkleRoot = getMerkleRoot(whitelistedAddresses).toString('hex')
+        console.log("whitelist root",whitelistMerkleRoot )
     } else {
         console.log("No addresses found in whitelist.csv");
     }
 
     // Read and process premint.csv
     const premintAddresses = await getListOfAddresses(premintPath);
-    console.log("Premint Addresses:", premintAddresses);
+    fs.writeFileSync(addressesPath, JSON.stringify({whitelistedAddresses,premintAddresses }));
     if (premintAddresses.length > 0) {
-        let tree  = new MerkleTree(premintAddresses);
-        premintMerkleRoot = tree.getRoot()
+        premintMerkleRoot =getMerkleRoot(premintAddresses).toString('hex')
         console.log("Premint Merkle Root:", premintMerkleRoot);
     } else {
         console.log("No addresses found in premint.csv");

@@ -4,6 +4,9 @@
   },
   "dependencies": {
     "@metaplex-foundation/mpl-candy-machine": "^6.0.1",
-    "merkletreejs": "^0.3.11"
+    "crypto-js": "^4.2.0",
+    "i": "^0.3.7",
+    "merkletreejs": "^0.3.11",
+    "npm": "^10.4.0"
   }
 }
